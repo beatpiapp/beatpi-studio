@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>BeatPi</title>
+<meta name="description" content="BeatPi: juegos para móvil.">
+<style>
+  :root { --bg: #f4f1ea; --fg: #1d2026; --muted: #6b6760; --accent: #c8741a; --card: #ffffff; }
+  @media (prefers-color-scheme: dark) { :root { --bg: #15181a; --fg: #ece6d8; --muted: #a39d90; --accent: #f2a33a; --card: #1e2225; } }
+  * { box-sizing: border-box; }
+  body { margin: 0; background: var(--bg); color: var(--fg); font: 16px/1.6 system-ui, -apple-system, "Segoe UI", Roboto, sans-serif; }
+  main { max-width: 720px; margin: 0 auto; padding: 48px 16px; }
+  h1 { font-size: 40px; margin: 0 0 4px; letter-spacing: 1px; }
+  .tag { color: var(--muted); margin: 0 0 40px; }
+  h2 { font-size: 14px; text-transform: uppercase; letter-spacing: 2px; color: var(--muted); margin: 0 0 12px; }
+  .game { display: flex; gap: 16px; align-items: center; background: var(--card); border-radius: 12px; padding: 16px; }
+  .game img { width: 72px; height: 72px; border-radius: 16px; image-rendering: pixelated; }
+  .game h3 { margin: 0; font-size: 20px; }
+  .game p { margin: 4px 0 8px; color: var(--muted); }
+  a { color: var(--accent); }
+  .links a { margin-right: 16px; }
+  footer { margin-top: 48px; color: var(--muted); font-size: 14px; }
+</style>
+</head>
+<body>
+<main>
+  <h1>BeatPi</h1>
+  <p class="tag">Juegos para móvil · Mobile games · Handyspiele</p>
+  <h2>Juegos</h2>
+  <div class="game">
+    <img src="knifepi/icon.png" alt="KnifePi">
+    <div>
+      <h3>KnifePi</h3>
+      <p>Sobrevive a la horda zombi con cuchillos, armas y mucho ingenio.</p>
+      <div class="links">
+        <a href="https://play.google.com/store/apps/details?id=com.knifepi.game">Google Play</a>
+        <a href="knifepi/privacy/">Privacidad · Privacy</a>
+      </div>
+    </div>
+  </div>
+  <footer>Contacto: <a href="mailto:beatpi.app@gmail.com">beatpi.app@gmail.com</a></footer>
+</main>
+</body>
+</html>
