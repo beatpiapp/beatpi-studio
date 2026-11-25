@@ -83,6 +83,14 @@ a { color: var(--amber); }
 @media (max-width: 760px) { .story-grid { grid-template-columns: 1fr; } }
 .panel { background: var(--panel); border: 4px solid var(--slab); box-shadow: 8px 8px 0 var(--slab); overflow: hidden; min-width: 0; }
 .panel img { display: block; width: 100%; }
+/* the story's picture: words over its dark left side, in the page's language,
+   sized to the picture (as the Play Games feature graphic has them) */
+.scene { position: relative; container-type: inline-size; }
+.scene::after { content: ""; position: absolute; inset: 0; background: linear-gradient(90deg, rgba(12,14,16,.92) 0, rgba(12,14,16,.7) 30%, transparent 52%); }
+.scene-txt { position: absolute; inset: 0 55% 0 0; z-index: 1; display: flex; flex-direction: column; justify-content: center; gap: 3.2cqw; padding-left: 5cqw; }
+.scene-txt span { font: 700 2.7cqw/1.25 var(--f-label); letter-spacing: .2cqw; color: var(--bone); text-shadow: .3cqw .3cqw 0 var(--slab); }
+.scene-txt .scene-logo { font: 5.2cqw/1 var(--f-pixel); color: var(--rot); text-shadow: 0 .6cqw 0 #3a6a1a, .5cqw 1cqw 0 var(--slab); margin-bottom: 1cqw; }
+.scene-txt .scene-amber { color: var(--amber); }
 .tilt-l { transform: rotate(-1.2deg); } .tilt-r { transform: rotate(.8deg); }
 .radio { padding: 22px 20px; display: flex; flex-direction: column; gap: 14px; background: #121417; }
 .static { height: 26px; background: repeating-linear-gradient(90deg, var(--line) 0 2px, transparent 2px 5px); animation: crackle .12s steps(2) infinite; opacity: .7; }

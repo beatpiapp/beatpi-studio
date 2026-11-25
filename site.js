@@ -31,6 +31,8 @@ const T = {
   final: ['¿AGUANTARÁS HASTA LA BASE?', 'WILL YOU MAKE IT TO THE BASE?', 'SCHAFFST DU ES BIS ZUR BASIS?'],
   studio: ['Un juego de BeatPi, estudio de juegos para móvil. Ver el estudio →', 'A game by BeatPi, a mobile games studio. See the studio →',
     'Ein Spiel von BeatPi, einem Studio für Handyspiele. Zum Studio →'],
+  scene1: ['SOBREVIVE A LA HORDA ZOMBI', 'SURVIVE THE ZOMBIE HORDE', 'ÜBERLEBE DIE ZOMBIEHORDE'],
+  scene2: ['CUCHILLOS, ARMAS Y AGALLAS', 'BLADES, GUNS & GRIT', 'KLINGEN, WAFFEN & MUT'],
   privacy: ['Política de privacidad', 'Privacy policy', 'Datenschutzerklärung'],
   contact: ['Contacto', 'Contact', 'Kontakt'],
   stat_weapons: ['ARMAS', 'WEAPONS', 'WAFFEN'], stat_zones: ['ZONAS', 'ZONES', 'ZONEN'], stat_bosses: ['JEFES', 'BOSSES', 'BOSSE'], stat_heroes: ['PERSONAJES', 'CHARACTERS', 'FIGUREN'],
