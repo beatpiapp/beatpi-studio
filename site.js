@@ -166,10 +166,11 @@ function radio() {
 
 // ------------------------------------------------------------------ the hero: a room of the game
 const cv = document.getElementById('horde'), cx = cv.getContext('2d');
-let W = 0, H = 0, SC = 3;
+let W = 0, H = 0, SC = 3, narrow = false;
 function size() {
   const r = cv.getBoundingClientRect(); const d = Math.min(devicePixelRatio || 1, 2);
   SC = r.width < 520 ? 2 : r.width < 1000 ? 3 : 4;
+  narrow = r.width < 600;    // a phone: the title fills the middle, he walks about above it
   cv.width = Math.ceil(r.width * d / SC); cv.height = Math.ceil(r.height * d / SC);
   W = cv.width; H = cv.height;
 }
@@ -197,7 +198,10 @@ function hurt(z, push) {
 }
 function step(dt) {
   clock += dt; spin += dt * 5; idle -= dt;
-  if (P.tx === null || idle < 0) { P.tx = W / 2 + Math.cos(clock * .5) * W * .22; P.ty = H * .42 + Math.sin(clock * .8) * H * .14; }
+  if (P.tx === null || idle < 0) {
+    P.tx = W / 2 + Math.cos(clock * .5) * W * (narrow ? .3 : .22);
+    P.ty = narrow ? H * .24 + Math.sin(clock * .8) * H * .07 : H * .42 + Math.sin(clock * .8) * H * .14;
+  }
   const ox = P.x;
   P.x += (P.tx - P.x) * Math.min(1, dt * 4); P.y += (P.ty - P.y) * Math.min(1, dt * 4);
   const moving = Math.abs(P.x - ox) > .05;
@@ -290,7 +294,7 @@ function loop(now) {
 }
 
 sheet.onload = () => {
-  P.x = W / 2; P.y = H * .45;
+  P.x = W / 2; P.y = narrow ? H * .24 : H * .45;
   for (let i = 0; i < 12; i++) newZombie();
   rail(); bosses(); arms(); applyLang();
   requestAnimationFrame(loop);
