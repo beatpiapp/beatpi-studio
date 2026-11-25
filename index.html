@@ -2,44 +2,109 @@
 <html lang="es">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>BeatPi</title>
-<meta name="description" content="BeatPi: juegos para móvil.">
-<style>
-  :root { --bg: #f4f1ea; --fg: #1d2026; --muted: #6b6760; --accent: #c8741a; --card: #ffffff; }
-  @media (prefers-color-scheme: dark) { :root { --bg: #15181a; --fg: #ece6d8; --muted: #a39d90; --accent: #f2a33a; --card: #1e2225; } }
-  * { box-sizing: border-box; }
-  body { margin: 0; background: var(--bg); color: var(--fg); font: 16px/1.6 system-ui, -apple-system, "Segoe UI", Roboto, sans-serif; }
-  main { max-width: 720px; margin: 0 auto; padding: 48px 16px; }
-  h1 { font-size: 40px; margin: 0 0 4px; letter-spacing: 1px; }
-  .tag { color: var(--muted); margin: 0 0 40px; }
-  h2 { font-size: 14px; text-transform: uppercase; letter-spacing: 2px; color: var(--muted); margin: 0 0 12px; }
-  .game { display: flex; gap: 16px; align-items: center; background: var(--card); border-radius: 12px; padding: 16px; }
-  .game img { width: 72px; height: 72px; border-radius: 16px; image-rendering: pixelated; }
-  .game h3 { margin: 0; font-size: 20px; }
-  .game p { margin: 4px 0 8px; color: var(--muted); }
-  a { color: var(--accent); }
-  .links a { margin-right: 16px; }
-  footer { margin-top: 48px; color: var(--muted); font-size: 14px; }
-</style>
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>KnifePi</title>
+<meta name="description" content="KnifePi: sobrevive a la horda zombi con cuchillos que giran y 22 armas de fuego. Juego para Android de BeatPi.">
+<meta property="og:title" content="KnifePi">
+<meta property="og:description" content="Sobrevive a la horda zombi con cuchillos que giran y 22 armas de fuego.">
+<meta property="og:image" content="https://beatpi.app/img/feature.jpg">
+<meta name="theme-color" content="#0e1013">
+<link rel="icon" href="img/icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Silkscreen:wght@400;700&family=Space+Grotesk:wght@400;600&display=swap">
+<link rel="stylesheet" href="site.css">
 </head>
 <body>
+<header class="top"><div class="wrap top-in">
+  <a class="brand" href="#"><img src="img/icon.png" alt="" width="28" height="28"><span>KNIFEPI</span></a>
+  <nav class="nav">
+    <a href="#historia" data-i="nav_story">HISTORIA</a><a href="#zonas" data-i="nav_zones">ZONAS</a>
+    <a href="#jefes" data-i="nav_bosses">JEFES</a><a href="#armas" data-i="nav_weapons">ARMAS</a>
+    <a href="#personajes" data-i="nav_heroes">PERSONAJES</a>
+  </nav>
+  <div class="langs" role="group" aria-label="Idioma">
+    <button data-lang="es">ES</button><button data-lang="en">EN</button><button data-lang="de">DE</button>
+  </div>
+</div></header>
+
 <main>
-  <h1>BeatPi</h1>
-  <p class="tag">Juegos para móvil · Mobile games · Handyspiele</p>
-  <h2>Juegos</h2>
-  <div class="game">
-    <img src="knifepi/icon.png" alt="KnifePi">
-    <div>
-      <h3>KnifePi</h3>
-      <p>Sobrevive a la horda zombi con cuchillos, armas y mucho ingenio.</p>
-      <div class="links">
-        <a href="https://play.google.com/store/apps/details?id=com.knifepi.game">Google Play</a>
-        <a href="knifepi/privacy/">Privacidad · Privacy</a>
-      </div>
+<!-- the hero: a room of the game you play with your finger -->
+<section class="hero">
+  <canvas id="horde" class="pix" aria-label="El superviviente con sus cuchillos y su pistola entre zombis"></canvas>
+  <div class="hud"><span>☠ <b id="kills">0</b></span><span class="hint" data-i="hint">TOCA O MUEVE EL RATÓN</span></div>
+  <div class="hero-over"><div class="wrap">
+    <h1 class="logo">KNIFEPI</h1>
+    <p class="hero-sub" data-i="tagline">Cuchillos que giran, armas que se desmontan y una horda que no se acaba.</p>
+    <div class="ctas">
+      <a class="btn" href="https://play.google.com/store/apps/details?id=com.knifepi.game" data-i="play">▶ GOOGLE PLAY</a>
+      <a class="btn ghost" href="#historia" data-i="see_story">VER LA HISTORIA</a>
+    </div>
+  </div></div>
+</section>
+<div class="stats" id="stats"></div>
+
+<section class="wrap shots" aria-label="Capturas">
+  <div class="rail" id="rail"></div>
+</section>
+
+<!-- the story: the radio, then the ten zones -->
+<section class="wrap story" id="historia">
+  <p class="eyebrow" data-i="act">ACTO I · LA RADIO</p>
+  <div class="story-grid">
+    <div class="panel tilt-l"><img src="img/feature.jpg" alt="" width="1024" height="500"></div>
+    <div class="panel tilt-r radio">
+      <div class="static"></div>
+      <p class="type" id="radio" aria-live="off"></p>
+      <div class="static"></div>
     </div>
   </div>
-  <footer>Contacto: <a href="mailto:beatpi.app@gmail.com">beatpi.app@gmail.com</a></footer>
+  <h2 class="big" data-i="zones_title">10 ZONAS HASTA<br>LA BASE MILITAR</h2>
+</section>
+<section class="wrap" id="zonas"><div class="zones" id="zones"></div></section>
+
+<section class="wrap" id="jefes">
+  <p class="eyebrow center" data-i="bosses_eyebrow">LOS QUE TE ESPERAN</p>
+  <h2 class="big center" data-i="bosses_title">20 JEFES</h2>
+  <div class="bosses" id="bosses"></div>
+</section>
+
+<section class="wrap" id="armas">
+  <p class="eyebrow center" data-i="weapons_eyebrow">CUERPO A CUERPO Y A DISTANCIA</p>
+  <h2 class="big center" id="weapons_title">39 ARMAS</h2>
+  <h3 class="sub" data-i="melee">ARMAS BLANCAS: GIRAN A TU ALREDEDOR</h3>
+  <div class="arms" id="melee"></div>
+  <h3 class="sub" data-i="guns">ARMAS DE FUEGO: APUNTAN SOLAS</h3>
+  <div class="arms" id="guns"></div>
+</section>
+
+<section class="wrap" id="personajes">
+  <p class="eyebrow center" data-i="heroes_eyebrow">CADA UNO CON SU TALLER</p>
+  <h2 class="big center" data-i="heroes_title">10 PERSONAJES</h2>
+  <div class="heroes" id="heroes"></div>
+</section>
+
+<section class="wrap final">
+  <h2 class="big center" data-i="final">¿AGUANTARÁS HASTA LA BASE?</h2>
+  <p class="center"><a class="btn" href="https://play.google.com/store/apps/details?id=com.knifepi.game" data-i="play">▶ GOOGLE PLAY</a></p>
+</section>
+
+<section class="wrap studio">
+  <a class="cart" href="estudio/">
+    <div class="ridge"></div>
+    <span class="studio-word">BEATPI</span>
+    <span data-i="studio">Un juego de BeatPi, estudio de juegos para móvil. Ver el estudio →</span>
+  </a>
+</section>
 </main>
+
+<footer class="foot"><div class="wrap foot-in">
+  <span>© 2026 BeatPi</span>
+  <a href="knifepi/privacy/" data-i="privacy">Política de privacidad</a>
+  <span><span data-i="contact">Contacto</span>: beatpi.app@gmail.com</span>
+</div></footer>
+
+<script src="data.js"></script>
+<script src="site.js"></script>
 </body>
 </html>
